@@ -40,6 +40,8 @@ public class CarController {
 
     @PostMapping("")
     public Car add(@RequestBody CarRequest p){
+        if (p.id == null)
+            p.id = UUID.randomUUID();
         List<Clown> clowns = new ArrayList<>();
         for (int i = 0; i < p.clowns.size(); i++) {
             clowns.add(clownService.get(p.clowns.get(i)));

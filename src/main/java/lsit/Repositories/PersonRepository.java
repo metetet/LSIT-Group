@@ -12,7 +12,6 @@ public class PersonRepository {
     static HashMap<UUID, Person> person = new HashMap<>();
 
     public void add(Person p){
-        p.id = UUID.randomUUID();
         person.put(p.id, p);
     }
 

@@ -35,6 +35,8 @@ public class PersonController {
 
     @PostMapping("")
     public Person add(@RequestBody Person p){
+        if (p.id == null)
+            p.id = UUID.randomUUID();
         personRepository.add(p);
         return p;
     }

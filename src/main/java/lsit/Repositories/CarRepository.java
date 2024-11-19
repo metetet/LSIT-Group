@@ -14,7 +14,6 @@ public class CarRepository {
     static HashMap<UUID, Car> cars = new HashMap<>();
 
         public void add(Car p){
-        p.id = UUID.randomUUID();
         cars.put(p.id, p);
     }
 
