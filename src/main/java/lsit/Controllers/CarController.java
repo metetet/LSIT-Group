@@ -55,10 +55,18 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
-    public Car update(@PathVariable("id") UUID id, @RequestBody Car p){
+    public Car update(@PathVariable("id") UUID id, @RequestBody CarRequest p){
         p.id = id;
-        carRepository.update(p);
-        return p;
+        List<Clown> clowns = new ArrayList<>();
+        for (int i = 0; i < p.clowns.size(); i++) {
+            clowns.add(clownService.get(p.clowns.get(i)));
+        }
+        Car car = new Car();
+        car.id = p.id;
+        car.clownList = clowns;
+
+        carRepository.update(car);
+        return car;
     }
 
     @DeleteMapping("/{id}")
@@ -67,3 +75,4 @@ public class CarController {
     }
     
 }
+
