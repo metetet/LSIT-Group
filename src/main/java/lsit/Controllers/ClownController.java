@@ -11,44 +11,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import lsit.Models.Person;
-import lsit.Repositories.PersonRepository;
+import lsit.Models.Clown;
+import lsit.Services.ClownService;
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
-    PersonRepository personRepository;
+@RequestMapping("/clown")
+public class ClownController {
+    ClownService clownService;
 
-    public PersonController(PersonRepository personRepository){
-        this.personRepository = personRepository;
+    public ClownController(ClownService clownService){
+        this.clownService = clownService;
     }
 
     @GetMapping("")
-    public List<Person> list(){
-        return personRepository.list();
+    public List<Clown> list(){
+        return clownService.list();
     }
 
     @GetMapping("/{id}")
-    public Person get(@PathVariable("id") UUID id){
-        return personRepository.get(id);
+    public Clown get(@PathVariable("id") UUID id){
+        return clownService.get(id);
     }
 
     @PostMapping("")
-    public Person add(@RequestBody Person p){
-        personRepository.add(p);
+    public Clown add(@RequestBody Clown p){
+        if (p.id == null)
+            p.id = UUID.randomUUID();
+        clownService.add(p);
         return p;
     }
 
     @PutMapping("/{id}")
-    public Person update(@PathVariable("id") UUID id, @RequestBody Person p){
+    public Clown update(@PathVariable("id") UUID id, @RequestBody Clown p){
         p.id = id;
-        personRepository.update(p);
+        clownService.update(p);
         return p;
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") UUID id){
-        personRepository.remove(id);
+        clownService.remove(id);
     }
     
 }
