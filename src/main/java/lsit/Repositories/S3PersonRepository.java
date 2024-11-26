@@ -27,11 +27,11 @@ import software.amazon.awssdk.services.s3.model.S3Object;
 @Primary
 @Repository
 public class S3PersonRepository implements IntPersonRepository {
-    final String BUCKET="";
+    final String BUCKET="lsit-example-bucket";
     final String PREFIX="cc.inc/Person/";
-    final String ACCESS_KEY="";
-    final String SECRET_KEY="";
-    final String ENDPOINT_URL="";
+    final String ACCESS_KEY="GOOG1EM4BODFHSWVPEFXA3FWS3TEG6CIL5RZ7WHQ3QN66MMUF5VKVAPAXYZCH";
+    final String SECRET_KEY="v/8XBIN27gtNjdRcK5ffIUcioMVyJur5UG7hPy24";
+    final String ENDPOINT_URL="https://storage.googleapis.com";
 
     S3Client s3client;
     AwsCredentials awsCredentials;

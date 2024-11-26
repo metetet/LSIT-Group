@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -25,10 +26,11 @@ import software.amazon.awssdk.services.s3.model.S3Object;
 
 import lsit.Models.Clown;
 
+@Primary
 @Repository
 public class S3ClownRepository implements IntClownRepository{
     final String BUCKET="lsit-example-bucket";
-    final String PREFIX="cc.inc/clowns/";
+    final String PREFIX="cc.inc/Clowns/";
     final String ACCESS_KEY="GOOG1EM4BODFHSWVPEFXA3FWS3TEG6CIL5RZ7WHQ3QN66MMUF5VKVAPAXYZCH";
     final String SECRET_KEY="v/8XBIN27gtNjdRcK5ffIUcioMVyJur5UG7hPy24";
     final String ENDPOINT_URL="https://storage.googleapis.com";

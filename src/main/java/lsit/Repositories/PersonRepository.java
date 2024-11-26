@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import lsit.Models.Person;
 
-@Primary
 @Repository
 public class PersonRepository implements IntPersonRepository{
 
