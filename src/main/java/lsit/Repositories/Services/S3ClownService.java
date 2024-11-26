@@ -29,7 +29,7 @@ import lsit.Models.Clown;
 @Repository
 public class S3ClownService implements IntClownService {
     final String BUCKET = "lsit-example-bucket";
-    final String PREFIX = "cc.inc/ClownService/";
+    final String PREFIX = "cc.inc/Clown/";
     final String ACCESS_KEY = "GOOG1EM4BODFHSWVPEFXA3FWS3TEG6CIL5RZ7WHQ3QN66MMUF5VKVAPAXYZCH";
     final String SECRET_KEY = "v/8XBIN27gtNjdRcK5ffIUcioMVyJur5UG7hPy24";
     final String ENDPOINT_URL = "https://storage.googleapis.com";
