@@ -11,25 +11,22 @@ import org.springframework.stereotype.Repository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import software.amazon.awssdk.core.ResponseInputStream;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.DeleteObjectRequest;
 import software.amazon.awssdk.services.s3.model.GetObjectRequest;
-import software.amazon.awssdk.services.s3.model.GetObjectResponse;
 import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Object;
-import lsit.Models.Car;
 import lsit.Models.Clown;
 
 @Primary
 @Repository
 public class S3ClownService implements IntClownService {
     final String BUCKET = "lsit-example-bucket";
-    final String PREFIX = "cc.inc/Clown/";
+    final String PREFIX = "cc.inc/Clowns/";
     final String ACCESS_KEY = "GOOG1EM4BODFHSWVPEFXA3FWS3TEG6CIL5RZ7WHQ3QN66MMUF5VKVAPAXYZCH";
     final String SECRET_KEY = "v/8XBIN27gtNjdRcK5ffIUcioMVyJur5UG7hPy24";
     final String ENDPOINT_URL = "https://storage.googleapis.com";

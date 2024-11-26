@@ -6,13 +6,13 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 
 import lsit.Models.Clown;
-import lsit.Repositories.ClownRepository;
+import lsit.Repositories.IntClownRepository;
 
 @Service
 public class ClownService implements IntClownService {
-    private final ClownRepository clownRepository;
+    private final IntClownRepository clownRepository;
 
-    public ClownService(ClownRepository clownRepository) {
+    public ClownService(IntClownRepository clownRepository) {
         this.clownRepository = clownRepository;
     }
 
