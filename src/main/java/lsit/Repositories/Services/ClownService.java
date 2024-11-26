@@ -9,7 +9,7 @@ import lsit.Models.Clown;
 import lsit.Repositories.ClownRepository;
 
 @Service
-public class ClownService {
+public class ClownService implements IntClownService {
     private final ClownRepository clownRepository;
 
     public ClownService(ClownRepository clownRepository) {
