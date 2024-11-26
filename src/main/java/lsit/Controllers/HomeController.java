@@ -18,7 +18,7 @@ public class HomeController {
     @GetMapping("/user")
     public String getUser(OAuth2AuthenticationToken authentication) throws Exception{
         var group = (List<String>)authentication.getPrincipal().getAttribute("https://gitlab.org/claims/groups/owner");
-        if(!group.contains("lsit-ken3239/roles/cc.inc-ringleader")){
+        if(!group.contains("lsit-ken3239/roles/cc-inc.manager")){
             throw new Exception("Authentication Failure");
         };
 
