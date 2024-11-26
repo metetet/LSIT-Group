@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lsit.Models.Clown;
-import lsit.Services.ClownService;
+import lsit.Repositories.Services.ClownService;
 
 @RestController
 @RequestMapping("/clown")

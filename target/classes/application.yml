@@ -1,3 +1,4 @@
+#https://gitlab.com/lsit-ken3239/live-demo
 spring:
   security:
     oauth2:
@@ -8,8 +9,8 @@ spring:
             client-secret: gloas-2b635dc4bf910399e28ed5ede32d88305bc7ebf6450150ee8a3cac4078fecf91
             scope: openid+profile+email
             authorization-grant-type: authorization_code
-            redirect-url: http://localhost:8080/login/oauth2/code/gitlab
+            redirect-uri: http://localhost:8080/login/oauth2/code/gitlab
         provider:
           gitlab:
-          issuer-url: https://gitlab.com
-          user-name-attribute: sub
+            issuer-uri: https://gitlab.com
+            user-name-attribute: sub

@@ -1,4 +1,4 @@
-package lsit.Services;
+package lsit.Repositories.Services;
 
 import java.util.List;
 import java.util.UUID;

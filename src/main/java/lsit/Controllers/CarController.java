@@ -15,7 +15,7 @@ import lsit.Models.Car;
 import lsit.Models.CarRequest;
 import lsit.Models.Clown;
 import lsit.Repositories.CarRepository;
-import lsit.Services.ClownService;
+import lsit.Repositories.Services.ClownService;
 
 @RestController
 @RequestMapping("/car")
