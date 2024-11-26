@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lsit.Models.Person;
-import lsit.Repositories.PersonRepository;
+import lsit.Repositories.IntPersonRepository;
 
 @RestController
 @RequestMapping("/person")
 public class PersonController {
-    PersonRepository personRepository;
+    IntPersonRepository personRepository;
 
-    public PersonController(PersonRepository personRepository){
+    public PersonController(IntPersonRepository personRepository){
         this.personRepository = personRepository;
     }
 
