@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import lsit.Models.Car;
 import lsit.Models.CarRequest;
 import lsit.Models.Clown;
-import lsit.Repositories.CarRepository;
+//import lsit.Repositories.CarRepository;
+import lsit.Repositories.IntCarRepository;
 import lsit.Repositories.Services.ClownService;
 
 @RestController
 @RequestMapping("/car")
 public class CarController {
-    private final CarRepository carRepository;
+    private final IntCarRepository carRepository;
     private final ClownService clownService;
 
-    public CarController(CarRepository carRepository, ClownService clownService){
+    public CarController(IntCarRepository carRepository, ClownService clownService){
         this.carRepository = carRepository;
         this.clownService = clownService;
     }
