@@ -12,14 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lsit.Models.Clown;
-import lsit.Repositories.Services.ClownService;
+import lsit.Repositories.Services.IntClownService;
+
 
 @RestController
 @RequestMapping("/clown")
 public class ClownController {
-    ClownService clownService;
+    private final IntClownService clownService;
 
-    public ClownController(ClownService clownService){
+    public ClownController(IntClownService clownService){
         this.clownService = clownService;
     }
 
