@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import lsit.Models.Car;
 
 @Repository
-public class CarRepository {
+public class CarRepository implements IntCarRepository{
     static HashMap<UUID, Car> cars = new HashMap<>();
 
-        public void add(Car p){
+    public void add(Car p){
         cars.put(p.id, p);
     }
 

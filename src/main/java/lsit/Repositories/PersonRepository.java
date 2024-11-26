@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import lsit.Models.Person;
 
 @Repository
-public class PersonRepository {
+public class PersonRepository implements IntPersonRepository{
 
     static HashMap<UUID, Person> person = new HashMap<>();
 

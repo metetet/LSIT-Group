@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 import lsit.Models.Clown;
 
 @Repository
-public class ClownRepository {
+public class ClownRepository implements IntClownRepository{
     static HashMap<UUID, Clown> clowns = new HashMap<>();
 
-        public void add(Clown p){
+    public void add(Clown p){
         clowns.put(p.id, p);
     }
 
