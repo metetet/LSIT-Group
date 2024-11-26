@@ -6,7 +6,6 @@ import java.util.UUID;
 import lsit.Models.Clown;
 
 public interface IntClownService {
-    Clown getClownById(UUID id);
     List<Clown> list();
     Clown get(UUID id);
     void add(Clown p);

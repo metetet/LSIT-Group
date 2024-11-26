@@ -16,10 +16,6 @@ public class ClownService implements IntClownService {
         this.clownRepository = clownRepository;
     }
 
-    public Clown getClownById(UUID id) {
-        return clownRepository.get(id); 
-    }
-
     public List<Clown> list() {
         return clownRepository.list();
     }
