@@ -13,6 +13,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
 import software.amazon.awssdk.services.s3.S3Client;
@@ -41,6 +42,7 @@ public class S3CarRepository implements IntCarRepository{
         s3client = S3Client.builder()
             .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
             .endpointOverride(URI.create(ENDPOINT_URL))
+            .region(Region.of("auto"))
             .build();
     }
 
