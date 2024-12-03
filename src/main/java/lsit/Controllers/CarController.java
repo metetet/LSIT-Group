@@ -2,6 +2,7 @@ package lsit.Controllers;
 
 import java.util.*;
 
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,17 +31,23 @@ public class CarController {
     }
 
     @GetMapping("")
-    public List<Car> list(){
+    public List<Car> list(OAuth2AuthenticationToken authentication) throws Exception{
+        String[] array = {"lsit-ken3239/roles/cc-inc.manager","lsit-ken3239/roles/cc-inc.seller","lsit-ken3239/roles/cc-inc.customer"};
+        authenticationMethod(authentication, array);
         return carRepository.list();
     }
 
     @GetMapping("/{id}")
-    public Car get(@PathVariable("id") UUID id){
+    public Car get(OAuth2AuthenticationToken authentication,@PathVariable("id") UUID id) throws Exception{
+        String[] array = {"lsit-ken3239/roles/cc-inc.manager","lsit-ken3239/roles/cc-inc.seller","lsit-ken3239/roles/cc-inc.customer"};
+        authenticationMethod(authentication, array);
         return carRepository.get(id);
     }
 
     @PostMapping("")
-    public Car add(@RequestBody CarRequest p){
+    public Car add(OAuth2AuthenticationToken authentication,@RequestBody CarRequest p) throws Exception{
+        String[] array = {"lsit-ken3239/roles/cc-inc.manager"};
+        authenticationMethod(authentication, array);
         if (p.id == null)
             p.id = UUID.randomUUID();
         List<Clown> clowns = new ArrayList<>();
@@ -56,7 +63,9 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
-    public Car update(@PathVariable("id") UUID id, @RequestBody CarRequest p){
+    public Car update(OAuth2AuthenticationToken authentication,@PathVariable("id") UUID id, @RequestBody CarRequest p) throws Exception{
+        String[] array = {"lsit-ken3239/roles/cc-inc.manager"};
+        authenticationMethod(authentication, array);
         p.id = id;
         List<Clown> clowns = new ArrayList<>();
         for (int i = 0; i < p.clowns.size(); i++) {
@@ -71,8 +80,45 @@ public class CarController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable("id") UUID id){
+    public void delete(OAuth2AuthenticationToken authentication,@PathVariable("id") UUID id) throws Exception{
+        String[] array = {"lsit-ken3239/roles/cc-inc.manager"};
+        authenticationMethod(authentication, array);
         carRepository.remove(id);
+    }
+
+
+    public String authenticationMethod(OAuth2AuthenticationToken authentication,String[] array) throws Exception{
+        var group = (List<String>)authentication.getPrincipal().getAttribute("https://gitlab.org/claims/groups/owner");
+        // if(!group.contains(parameter) ){
+        //     throw new Exception("Authentication Failure");
+        // };
+
+        var userAttributes = authentication.getPrincipal().getAttributes();
+
+        //https://gitlab.org/claims/groups/owner
+
+    //  StringBuilder b = new StringBuilder();
+    //  for(var entry: userAttributes.entrySet()){
+    //      var s = entry.getKey() + ": " + entry.getValue();
+    //      b.append("\n").append(s);
+    //  }
+        int counter = 0;
+        for (int index = 0; index < array.length; index++) {
+            if(group.contains(array[index])){
+                counter++;
+            };
+        }
+        if(counter == 0){
+            throw new Exception("Authentication Failure");
+        }
+        return "<pre> \n" +
+            userAttributes.entrySet().parallelStream().collect(
+                StringBuilder::new,
+                (s, e) -> s.append(e.getKey()).append(": ").append(e.getValue()),
+                (a, b) -> a.append("\n").append(b)
+            ) +
+            "</pre>";
+
     }
     
 }
