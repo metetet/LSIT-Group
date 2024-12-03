@@ -28,10 +28,10 @@ import lsit.Models.Car;
 @Repository
 public class S3CarRepository implements IntCarRepository{
     
-    final String BUCKET="lsit-example-bucket";
+    final String BUCKET="clowncarinc";
     final String PREFIX="cc.inc/Cars/";
-    final String ACCESS_KEY="GOOG1EM4BODFHSWVPEFXA3FWS3TEG6CIL5RZ7WHQ3QN66MMUF5VKVAPAXYZCH";
-    final String SECRET_KEY="v/8XBIN27gtNjdRcK5ffIUcioMVyJur5UG7hPy24";
+    final String ACCESS_KEY="GOOG1E35DFGSG6AJPOJAU5GGA3RU2SZYOTWW3FMNH5SFSCAF745Z4BVTVFRKI";
+    final String SECRET_KEY="geBCBQhU1bcAH4KlOtwuYfVM0KNSFRvGrFh3eu60";
     final String ENDPOINT_URL="https://storage.googleapis.com";
 
     S3Client s3client;
@@ -119,7 +119,7 @@ public class S3CarRepository implements IntCarRepository{
 
         for(S3Object o : objects){
             Car p = new Car();
-            p.id = UUID.fromString(ACCESS_KEY);
+            p.id = UUID.fromString(o.key().substring(PREFIX.length()));
             cars.add(p);
         }
 

@@ -3,11 +3,13 @@ package lsit.Repositories.Services;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import lsit.Models.Clown;
 import lsit.Repositories.IntClownRepository;
 
+@Primary
 @Service
 public class ClownService implements IntClownService {
     private final IntClownRepository clownRepository;

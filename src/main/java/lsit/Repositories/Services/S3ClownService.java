@@ -23,7 +23,6 @@ import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 import software.amazon.awssdk.services.s3.model.S3Object;
 import lsit.Models.Clown;
 
-@Primary
 @Repository
 public class S3ClownService implements IntClownService {
     final String BUCKET = "lsit-example-bucket";
